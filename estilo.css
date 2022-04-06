@@ -1,5 +1,51 @@
-.caixa{
-    height: 100px;
-    width: 100px;
+
+h1{
+    font-family: 'Roboto', sans-serif;
+    font-size: 56px;
+    font-weight: bold;
+    color: #75B79E;
+}
+body{
     background-color: red;
+}
+.conteiner{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    background-color: #EEF9BF;
+}
+.titulo{
+    margin-top: 40px;
+    text-align: center;
+    border: 2px solid red;
+}
+.conteinerCartas{
+    margin-top: 47px;
+    width: 872px;
+    border: 2px solid blue;
+}
+.conteinerCartas :first-child{
+    margin-bottom: 10px;
+}
+.linha{
+    display: flex;
+    justify-content: space-between;
+}
+
+.carta{
+    display: inline-block;
+    height: 146px;
+    width: 117px; 
+    background-color: #A7E9AF;
+    border: 1px solid #99CEA8;
+}
+
+.frente{
+    margin: 24px 7px 22px 10px;
+    width: 100px;
+    height: 100px;
+}
+.linha span:nth-of-type(){
+    background-color: aqua;
 }
