@@ -25,12 +25,10 @@ body{
     width: 872px;
     border: 2px solid blue;
 }
-.conteinerCartas :first-child{
-    margin-bottom: 10px;
-}
-
-.linha, .linha2{
-    display: flex;
+.linha{
+    display:grid ;
+    grid: repeat(2, 170px) / auto-flow 117px;
+    align-items: center;
     justify-content: space-evenly;
 }
 
@@ -73,17 +71,15 @@ body{
     background-color: aqua;
 }
 
+.sumir{display: none;}
+
 @media (max-width: 600px){
     .linha{
+        display: flex;
       flex-direction: column;
       justify-content:  none;
       align-items: center;
     }
-    .linha2{
-        flex-direction: column;
-        justify-content:  none;
-        align-items: center;
-      }
     .conteinerCartas{
         margin-top: none;
         width: max-content;
