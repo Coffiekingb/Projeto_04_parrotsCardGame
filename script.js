@@ -1,85 +1,85 @@
+let contador =0;
 const listaCartas = [];
 const cartas = document.querySelector(".linha");
 const cartasCostas= ["bobrossparrot.gif","bobrossparrot.gif","explodyparrot.gif","explodyparrot.gif","fiestaparrot.gif","fiestaparrot.gif", "metalparrot.gif","metalparrot.gif","revertitparrot.gif","revertitparrot.gif","tripletsparrot.gif","tripletsparrot.gif","unicornparrot.gif","unicornparrot.gif"]
-function comparador() { 
-	return Math.random() - 0.5; 
-}
-function inserirCartas(){
+
+
+function pedirCartas(){
 let quantCartas = Number(prompt("Com quantas cartas você que jogar? (insira um número par entre 4-14)"));
 const verificarPar= quantCartas % 2;
-const max =quantCartas  - 1;
+
 
  if(quantCartas>= 4 && quantCartas<= 14 && verificarPar === 0 ){
-      for(let i=0; i<=max; i++){
-         let card =`<div class="carta " onclick="virar(this)"  >
-      <div class=" frente face" >
-        <img src="imagens/front.png" alt="">
-      </div>
-      <div class=" costas face">
-      <img src="imagens/${cartasCostas[i]}" alt="">
-      </div>
-        </div>`;
-        listaCartas.push(card)
+      for(let i=0; i<quantCartas; i++){
+         let card =`<div class="carta "  onclick="verificarCarta()">
+          <div class=" costas face">
+           <img src="imagens/${cartasCostas[i]}" alt="">
+          </div>
+          <div class=" frente face" onclick="chama3(this)"  >
+           <img src="imagens/front.png" >
+          </div>
+         </div>`;
+        listaCartas.push({card})  
+        
       }
+      adcImg(quantCartas)
       embaralhar();
+      inserirCarta();
     }else{
           alert("Por favor, insira um número par entre 4 e 14"); 
-          inserirCartas();
+          pedirCartas();
         }
 }
-inserirCartas()
-
+pedirCartas()
+function adcImg(elemento){
+  for(let i=0; i<elemento; i++){
+  listaCartas[i].imagem= cartasCostas[i];
+  }
+}
 function embaralhar(){
  listaCartas.sort(comparador);
-      cartas.innerHTML =listaCartas.join('');
+}
+
+function inserirCarta(){
+  let teste =listaCartas.length;
+  for(let i= 0; i<=listaCartas.length-1; i++){
+    cartas.innerHTML +=listaCartas[i].card;
+    console.log(listaCartas)
+  }
+ 
 }
 
 function virar(elemento){
-  
+ elemento.classList.add("sumir");
+
+ 
+ setTimeout(desvirar, 1000, elemento)
   console.log(elemento)
+  
+}
+function desvirar(bla){
+  console.log("rodei")
+  bla.classList.remove("sumir");
+}
+function verificarCarta(){
+  console.log("rodei tbm")
+
+}
+function chama3(botao){
+  virar(botao);
+  
+
 }
 
-let contador =0;
 function counterClick(){
   contador++;
+  console.log(contador)
 }
 
 function displayCounter(){
-  
+
+  alert(`Parabéns! Você ganhou em ${contador} jogadas!`)
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* cartas.innerHTML+= `<div class="carta" onclick="counterClick()" >
-        <div class="frente face">
-          <img src="imagens/front.png" alt="">
-        </div>
-        <div class="costas face">
-          costas${i}
-        </div>
-          </div>`;
-        cartas = document.querySelector(".linha2");
-        cartas.innerHTML+= `<div class="carta" onclick="displayCounter()">
-      <div class="frente face" >
-        <img src="imagens/front.png" alt="">
-      </div>
-      <div class="costas face">
-        costas${i}  
-      </div>
-          </div>`; */
+function comparador() { 
+	return Math.random() - 0.5; 
+}

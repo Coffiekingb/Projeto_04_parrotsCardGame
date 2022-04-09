@@ -54,13 +54,15 @@ body{
     cursor: pointer;
 }
 .costas{
+    display: flex ;
+}
+
+.rodar{
+    transition: all .5s;
     transform: rotateY(180deg);
 }
-.carta:active .costas{
+.rodar2{
     transform: rotateY(0deg);
-}
-.carta:active .frente{
-    transform: rotateY(180deg);
 }
 .carta img{
     margin: 24px 7px 22px 10px;
