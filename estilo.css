@@ -18,18 +18,18 @@ body{
 .titulo{
     margin-top: 40px;
     text-align: center;
-    border: 2px solid red;
+    ;
 }
 .conteinerCartas{
     margin-top: 47px;
     width: 872px;
-    border: 2px solid blue;
+    
 }
 .linha{
     display:grid ;
-    grid: repeat(2, 170px) / auto-flow 117px;
+    grid: repeat(2, 170px) / auto-flow 130px;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content:  center;
 }
 
 .carta{

@@ -14,7 +14,7 @@ const verificarPar= quantCartas % 2;
  if(quantCartas>= 4 && quantCartas<= 14 && verificarPar === 0 ){
       for(let i=0; i<quantCartas; i++){
          let card =`<div class="carta " >
-          <div class=" face" onclick="chama3(this)"  >
+          <div class=" face" onclick="virar(this)"  >
           <div class=" costas face">
            <img src="imagens/${cartasCostas[i]}" alt="">
           </div>
@@ -51,10 +51,19 @@ function inserirCarta(){
  
 }
 
-function virar(elemento){
+let click =0 ;
+ function virar(elemento){
+  console.log(elemento.id)
+   
+   click ++;
+   if(click<=2){
  elemento.lastElementChild.classList.add("sumir");
- verificarCarta(elemento);
+  console.log("eu sou o click" + click)
+  verificarCarta(elemento);
+  counterClick();
 }
+}
+
 
 function desvirar(cartasViradas){
 let ultimaCartaVirada=cartasViradas[cartasViradas.length-1];
@@ -62,6 +71,7 @@ let ultimaCartaVirada=cartasViradas[cartasViradas.length-1];
   console.log(ultimaCartaVirada)
   ultimaCartaVirada.classList.remove("sumir");
   penultimaCartaVirada.classList.remove("sumir");
+  click = 0
 }
 function verificarCarta(elemento){
   arrayParrots.push(elemento.firstElementChild.innerHTML)
@@ -69,30 +79,19 @@ function verificarCarta(elemento){
  const verificarPar= cartasViradas.length % 2;
  let ultimaCartaVirada=arrayParrots[arrayParrots.length-1];
  let penultimaCartaVirada=arrayParrots[arrayParrots.length-2];
- console.log(cartasViradas)
- 
  if(verificarPar!== 1 && cartasViradas.length>=2){
-     if(ultimaCartaVirada!==penultimaCartaVirada){
-     setTimeout(desvirar, 1000, cartasViradas)
-     setTimeout(timeoutClick, 1000, cartasViradas)
-    }else{
+  
+     if(ultimaCartaVirada===penultimaCartaVirada){
       setTimeout(displayCounter, 100)
+      click = 0
+    }else{
+      setTimeout(desvirar, 1000, cartasViradas)
+     cartasViradas = []
     }
- }  
+ } 
+ teste=[]
 }
 
-function timeoutClick(carta){
- carta.document.querySelector("onclick").remove("onclick='chama3(this)'")
- setTimeout(toBackClick, 1000, cartas)
-}
-function toBackClick(carta){
-  carta.document.querySelector("onclick").add("onclick='chama3(this)'")
-}
-function chama3(botao){
-  virar(botao);
-  counterClick();
-  
-}
 
 function counterClick(){
   contador++;
@@ -106,8 +105,21 @@ function displayCounter(){
 
  if(fim.length===listaCartas.length){
   alert(`Parabéns! Você ganhou em ${contador} jogadas!`)
-}
+  recomecar()
   }
+}
+function recomecar(){
+  let recomecar = prompt("Jogar de novo? sim ou não?")
+  if (recomecar === "sim"){
+  location.reload()
+  teste=[]
+}else if(recomecar === "não"){
+  alert("Game Over")
+} else{
+  alert("Não entendi, por favor insira apenas sim ou não")
+  displayCounter()
+}
+}
 function comparador() { 
 	return Math.random() - 0.5; 
 }
