@@ -53,9 +53,12 @@ body{
     transform-style: preserve-3d;
     cursor: pointer;
 }
+.frente{
+}
 .costas{
     display: flex ;
 }
+
 
 .rodar{
     transition: all .5s;
